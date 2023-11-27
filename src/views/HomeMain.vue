@@ -1,9 +1,15 @@
 <script setup>
-import Index from "./views/index.vue";
+
 </script>
+
+
+
+
 <template>
-  <div>
-    <Index />
+  <div class="w-full h-full">
+    <div>
+      123456
+    </div>
   </div>
 </template>
 
