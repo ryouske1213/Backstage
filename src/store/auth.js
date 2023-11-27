@@ -8,10 +8,12 @@ export const useMemeberStore = defineStore('auth', {
   actions: {
     showState() {
         this.memberState = true
+        console.log(this.memberState)
 
     },
     closeState() {
         this.memberState = false
+        console.log(this.memberState)
 
     }
   }
