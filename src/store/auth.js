@@ -2,18 +2,18 @@ import { defineStore } from "pinia";
 
 export const useMemeberStore = defineStore('auth', {
   state: () => ({
-    memberState: false
+    model: false
   }),
 
   actions: {
-    showState() {
-        this.memberState = true
-        console.log(this.memberState)
+    showModel() {
+        this.model = true
+        console.log(this.model)
 
     },
-    closeState() {
-        this.memberState = false
-        console.log(this.memberState)
+    closeModel() {
+        this.model = false
+        console.log(this.model)
 
     }
   }
