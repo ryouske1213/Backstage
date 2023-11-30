@@ -1,7 +1,4 @@
 <script setup>
-import {useMemeberStore} from '../store/auth'
-
-let isMemberStore = useMemeberStore()
 
 
 </script>

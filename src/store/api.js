@@ -5,6 +5,7 @@ import axios from 'axios'
 export const useApiStore = defineStore('api', {
     state: () => ({
       data: null,
+      coffeeData: null,
       loading: false,
       error: null,
       id: Number,
@@ -35,7 +36,7 @@ export const useApiStore = defineStore('api', {
         this.count = count
   
         try {
-          // 在這裡執行 API 請求，這裡只是一個示例
+          // 創建 CoffeeItem 資料
           const response = await axios.get(`http://localhost:8080/api/coffeeData?id=${id}&productId=${productId}&name=${name}&roast=${roast}&Origin=${Origin}&method=${method}&flavour=${flavour}&unit=${unit}&price=${price}&count=${count}`);
           const data = await response.json();
           this.data = data;
@@ -46,5 +47,19 @@ export const useApiStore = defineStore('api', {
           this.loading = false;
         }
       },
+      async ShowCoffeeData() {
+        try {
+          const response = await axios.get('http://localhost:8080/api/coffeeData/Inquire')
+          const { data } = response
+          this.data = data
+          this.error = null;
+          return data
+        } catch {
+          this.error = error.message || 'An error occurred';
+        }
+      }
     },
+    getters: {
+      
+    }
   });

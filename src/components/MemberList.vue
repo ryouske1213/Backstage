@@ -6,7 +6,7 @@ const buttonMemberState = useMemeberStore()
 
 
 </script>
-
+  
 <template>
   <div class="w-full">
     <div class="w-full">
@@ -16,9 +16,14 @@ const buttonMemberState = useMemeberStore()
       <table>
         <thead>
           <tr class="w-full">
-            <th class="w-40 p-2 border border-gray-400">姓名</th>
-            <th class="w-40 p-2 border border-gray-400">年齡</th>
-            <th class="w-40 p-2 border border-gray-400">城市</th>
+            <th class="w-40 p-2 border border-gray-400">產品ID</th>
+            <th class="w-40 p-2 border border-gray-400">產品</th>
+            <th class="w-40 p-2 border border-gray-400">烘培度</th>
+            <th class="w-40 p-2 border border-gray-400">產地</th>
+            <th class="w-40 p-2 border border-gray-400">咖啡豆處理</th>
+            <th class="w-40 p-2 border border-gray-400">特色</th>
+            <th class="w-40 p-2 border border-gray-400">金額</th>
+            <th class="w-40 p-2 border border-gray-400">數量</th>
           </tr>
         </thead>
         <tbody>

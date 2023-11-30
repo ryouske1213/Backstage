@@ -2,12 +2,10 @@
 import MemberList from '../../components/MemberList.vue'
 import sidebar from "../../components/sidebar.vue";
 import Header from "../../components/header.vue";
-import Model from '../../components/Model.vue';
+import Model from '../../components/Model.vue'
 import { useMemeberStore } from '../../store/auth.js'
 
 const buttonMemberState = useMemeberStore()
-
-console.log(buttonMemberState.model)
 
 </script>
 

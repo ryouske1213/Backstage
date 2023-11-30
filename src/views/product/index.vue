@@ -2,12 +2,19 @@
 import ProductList from '../../components/ProductList.vue'
 import sidebar from "../../components/sidebar.vue";
 import Header from "../../components/header.vue";
+import Model from '../../components/Model.vue';
+import { useMemeberStore } from '../../store/auth.js'
+
+
+const buttonMemberState = useMemeberStore()
+
 </script>
 
 
 
 
 <template>
+   <Model v-if="buttonMemberState.model" />
    <div class="min-w-screen h-screen flex">
     <sidebar />
     <div class="w-full h-full">
