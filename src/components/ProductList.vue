@@ -1,27 +1,36 @@
 <script setup>
 import { useApiStore } from '../store/api'
 import { useMemeberStore } from '../store/auth'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
+import ReviseModel from '../components/ReviseModel.vue'
 
 const buttonAPI = useApiStore()
 const buttonMemberState = useMemeberStore()
 const useCoffeeData = ref([])
-const router = useRouter()
+let newPatch = reactive([])
+// const forEachPatch = reactive()
 
 onMounted(async() => {
   useCoffeeData.value = await buttonAPI.ShowCoffeeData()
 })
 
 const buttonPatch = (item) => {
-  console.log(item)
+  newPatch = item
   buttonMemberState.ReviseShowModel()
-  router.push({params: item})
+  
+  
+  
+  
+  
+  console.log(newPatch)
 }
+
 
 </script>
 
 <template>
+  <ReviseModel v-if="buttonMemberState.ReviseModel" :newPatch="newPatch"/>
   <div class="w-full h-[600px] overflow-y-auto">
     <div class="w-full">
       <button class="w-20 m-4 py-2 bg-slate-400 rounded-lg" @click="buttonMemberState.showModel()">添加</button>

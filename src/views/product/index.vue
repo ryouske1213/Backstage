@@ -3,7 +3,6 @@ import ProductList from '../../components/ProductList.vue'
 import sidebar from "../../components/sidebar.vue";
 import Header from "../../components/header.vue";
 import Model from '../../components/Model.vue';
-import ReviseModel from '../../components/ReviseModel.vue'
 import { useMemeberStore } from '../../store/auth.js'
 
 
@@ -16,7 +15,6 @@ const buttonMemberState = useMemeberStore()
 
 <template>
    <Model v-if="buttonMemberState.model" />
-   <ReviseModel v-if="buttonMemberState.ReviseModel" />
    <div class="min-w-screen h-screen flex">
     <sidebar />
     <div class="w-full h-full">

@@ -1,9 +1,12 @@
 <script setup>
-import { ref, reactive, onMounted, watch } from "vue";
+import { ref, reactive, onMounted, watch, computed } from "vue";
 import axios from "axios";
 import Input from "./input.vue";
 import { useApiStore } from "../store/api";
 import { useMemeberStore } from "../store/auth";
+
+const props = defineProps(["newPatch"])
+console.log(props.newPatch)
 
 const id = ref("");
 const productId = ref("");
@@ -60,19 +63,16 @@ const buttonReviseAPI = async () => {
 watch(
   [productId, username, roast, Origin, method, flavour, unit, price, count],
   (newNum, oldNum) => {
-    if(productId.value.trim() !== '') {
-    console.log(productId.value);
-
-    }
+    console.log()
   }
 );
 </script>
 
 <template>
   <div
-    class="fixed w-full h-full justify-center items-center flex bg-black opacity-40"
+    class="fixed w-full h-full inset-0 justify-center items-center flex bg-black opacity-40"
   ></div>
-  <div class="absolute w-full h-full flex justify-center mt-20">
+  <div class="absolute inset-0 w-full h-full flex justify-center mt-20">
     <div class="w-[350px] h-[600px] bg-white rounded-lg">
       <button
         class="absolute -top-8"
