@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <div class="w-1/5 h-full">
+  <div class="w-[200px] h-full">
     <div class="w-full h-full text-center font-bold">
       <div class="py-20">
         <h3 class="h-full text-2xl">平凡後台</h3>

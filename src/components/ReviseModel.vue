@@ -1,13 +1,13 @@
 <script setup>
-import { ref, reactive, onMounted, watch, computed } from "vue";
+import { ref, reactive, onMounted, watch, inject } from "vue";
 import axios from "axios";
 import Input from "./input.vue";
 import { useApiStore } from "../store/api";
 import { useMemeberStore } from "../store/auth";
 
 const props = defineProps(["newPatch"])
-console.log(props.newPatch)
-
+// console.log(props.newPatch)
+const _id = ref("")
 const id = ref("");
 const productId = ref("");
 const username = ref("");
@@ -21,20 +21,21 @@ const count = ref("");
 const apiStore = useApiStore();
 const buttonMemberState = useMemeberStore();
 const buttonShowCoffeeData = ref();
-const inputValue = ref([]);
-// const inputValue = reactive({
-//   productId: productId.value,
-//   username: username.value,
-//   roast: roast.value,
-//   Origin: Origin.value,
-//   method: method.value,
-//   flavour: flavour.value,
-//   unit: unit.value,
-//   price: price.value,
-//   count: count.value,
-// });
+const inputValue = props.newPatch
 
-// console.log(inputValue.productId);
+const PatchInput = reactive({
+  id: id.value = inputValue.id,
+  productId: productId.value = inputValue.productId,
+  username: username.value = inputValue.name,
+  roast: roast.value = inputValue.roast,
+  Origin: Origin.value = inputValue.Origin,
+  method: method.value = inputValue.method,
+  flavour: flavour.value = inputValue.flavour,
+  unit: unit.value = inputValue.unit,
+  price: price.value = inputValue.price,
+  count: count.value = inputValue.count,
+  _id: _id.value = inputValue._id
+});
 
 onMounted(async () => {
   buttonShowCoffeeData.value = await apiStore.ShowCoffeeData();
@@ -42,8 +43,9 @@ onMounted(async () => {
 
 const buttonReviseAPI = async () => {
   const { data } = await axios.patch(
-    `http://localhost:8080/update/${id.value}`,
+    `http://localhost:8080/update/${_id.value}`,
     {
+      _id: _id.value,
       productId: productId.value,
       username: username.value,
       roast: roast.value,
@@ -55,17 +57,10 @@ const buttonReviseAPI = async () => {
       count: count.value,
     }
   );
-  console.log(data);
-  console.log(inputValue.value)
+  window.location.reload()
   return data;
 };
 
-watch(
-  [productId, username, roast, Origin, method, flavour, unit, price, count],
-  (newNum, oldNum) => {
-    console.log()
-  }
-);
 </script>
 
 <template>
@@ -86,9 +81,10 @@ watch(
         <label class="w-full text-center mx-4">序號ID</label>
         <Input
           class="mx-4"
-          :id="id"
-          :value="id"
-          @input="id = $event.target.value"
+          :id="_id"
+          :value="_id"
+          @input="_id = $event.target.value"
+          v-model="_id"
         />
       </div>
       <div class="flex my-2">
