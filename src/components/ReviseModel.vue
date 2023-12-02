@@ -43,7 +43,7 @@ onMounted(async () => {
 
 const buttonReviseAPI = async () => {
   const { data } = await axios.patch(
-    `http://localhost:8080/update/${_id.value}`,
+    `http://localhost:8080/api/update/${_id.value}`,
     {
       _id: _id.value,
       productId: productId.value,

@@ -91,6 +91,8 @@ const buttonAPI = async () => {
   } else {
     count.value = "";
   }
+
+  window.location.reload()
 };
 </script>
 

@@ -4,11 +4,13 @@ import { useMemeberStore } from '../store/auth'
 import { ref, onMounted, reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
 import ReviseModel from '../components/ReviseModel.vue'
+import DeleteModel from '../components/DeleteModel.vue'
 
 const buttonAPI = useApiStore()
 const buttonMemberState = useMemeberStore()
 const useCoffeeData = ref([])
 let newPatch = reactive([])
+let _id = ref()
 // const forEachPatch = reactive()
 
 onMounted(async() => {
@@ -19,12 +21,16 @@ const buttonPatch = (item) => {
   newPatch = item
   buttonMemberState.ReviseShowModel()
 }
+const buttonDelete = () => {
+  buttonMemberState.DeleteShowModel()
+}
 
 
 </script>
 
 <template>
   <ReviseModel v-if="buttonMemberState.ReviseModel" :newPatch="newPatch"/>
+  <DeleteModel v-if="buttonMemberState.DeleteModel"/>
   <div class="w-auto h-[550px] overflow-y-auto">
     <div class="w-[1200px] overflow-x-auto">
       <div class="">
@@ -60,6 +66,7 @@ const buttonPatch = (item) => {
               <td class="border p-2 border-gray-400">{{item.price}}</td>
               <td>
                 <button class="w-20 m-2 py-2 bg-slate-400 rounded-lg" @click="buttonPatch(item)">修改</button>
+                <button class="w-20 m-2 py-2 bg-slate-400 rounded-lg" @click="buttonDelete()">刪除</button>
               </td>
             </tr>
           </tbody>
