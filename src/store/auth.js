@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 
 export const useMemeberStore = defineStore('auth', {
   state: () => ({
-    model: false
+    model: false,
+    ReviseModel: false
   }),
 
   actions: {
@@ -14,7 +15,14 @@ export const useMemeberStore = defineStore('auth', {
     closeModel() {
         this.model = false
         console.log(this.model)
-
+    },
+    ReviseShowModel() {
+        this.ReviseModel = true
+        console.log(this.ReviseModel)
+    },
+    ReviseCloseModel() {
+        this.ReviseModel = false
+        console.log(this.ReviseModel)
     }
   }
 })
