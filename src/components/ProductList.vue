@@ -31,8 +31,8 @@ const buttonDelete = () => {
 <template>
   <ReviseModel v-if="buttonMemberState.ReviseModel" :newPatch="newPatch"/>
   <DeleteModel v-if="buttonMemberState.DeleteModel"/>
-  <div class="w-auto h-[550px] overflow-y-auto">
-    <div class="w-[1200px] overflow-x-auto">
+  <div class="xl:h-[550px] overflow-y-auto">
+    <div class="lg:w-[1100px] h-[400px] xl:w-full overflow-x-auto">
       <div class="">
         <button class="w-20 m-4 py-2 bg-slate-400 rounded-lg" @click="buttonMemberState.showModel()">添加</button>
       </div>
