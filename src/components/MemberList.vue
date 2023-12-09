@@ -1,9 +1,26 @@
 <script setup>
 import { useMemeberStore } from '../store/auth'
+import { useUserApi } from '../store/User'
+import axios from 'axios'
+import { ref, onMounted } from 'vue';
 
 const buttonMemberState = useMemeberStore()
+const buttonUserAPI = useUserApi()
+const showUserData = ref()
+const username = ref('coo')
+const password = ref('zxczxc')
 
+onMounted(async () => {
+  showUserData.value = await buttonUserAPI.ShowUserData()
+})
 
+const aaa = async () => {
+  const postData = {
+    username: username.value,
+    password: password.value
+  }
+  await buttonUserAPI.isUser(postData)
+}
 
 </script>
   
@@ -16,26 +33,16 @@ const buttonMemberState = useMemeberStore()
       <table>
         <thead>
           <tr class="w-full">
-            <th class="w-40 p-2 border border-gray-400">產品ID</th>
-            <th class="w-40 p-2 border border-gray-400">產品</th>
-            <th class="w-40 p-2 border border-gray-400">烘培度</th>
-            <th class="w-40 p-2 border border-gray-400">產地</th>
-            <th class="w-40 p-2 border border-gray-400">咖啡豆處理</th>
-            <th class="w-40 p-2 border border-gray-400">特色</th>
-            <th class="w-40 p-2 border border-gray-400">金額</th>
-            <th class="w-40 p-2 border border-gray-400">數量</th>
+            <th class="w-40 p-2 border border-gray-400">序號ID</th>
+            <th class="w-40 p-2 border border-gray-400">會員帳號</th>
+            <th class="w-40 p-2 border border-gray-400">會員密碼</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="border p-2 border-gray-400">John Doe</td>
-            <td class="border p-2 border-gray-400">25</td>
-            <td class="border p-2 border-gray-400">New York</td>
-          </tr>
-          <tr>
-            <td class="border p-2 border-gray-400">Jane Doe</td>
-            <td class="border p-2 border-gray-400">30</td>
-            <td class="border p-2 border-gray-400">Los Angeles</td>
+          <tr v-for="item in showUserData" :key="item._id">
+            <td class="border p-2 border-gray-400">{{ item._id }}</td>
+            <td class="border p-2 border-gray-400">{{item.username}}</td>
+            <td class="border p-2 border-gray-400">{{item.password}}</td>
           </tr>
         </tbody>
       </table>
